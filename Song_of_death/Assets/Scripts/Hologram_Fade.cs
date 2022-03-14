@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class Hologram_Fade : MonoBehaviour
 {
-    public GameObject _gmObj;
-    public static bool IsHide = false;
+    [SerializeField]
+    public GameObject _HologramObj;
 
-    // Update is called once per frame
-    void Update()
+   
+    private void OnTriggerEnter(Collider other)
     {
-        if (IsHide)
+        if (other.CompareTag("Player"))
         {
-            _gmObj.SetActive(false);
-        }
-        else
-        {
-            _gmObj.SetActive(true);
+            _HologramObj.SetActive(true);
+            Debug.Log("Shows Hologram");
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _HologramObj.SetActive(false);
+            Debug.Log("Shows Hologram");
+        }
+    }
+
+
 }
