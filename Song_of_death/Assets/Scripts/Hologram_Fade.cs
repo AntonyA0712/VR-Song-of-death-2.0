@@ -4,27 +4,41 @@ using UnityEngine;
 
 public class Hologram_Fade : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject _HologramObj;
+    public SkinnedMeshRenderer _HologramObj;
 
-   
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.CompareTag("Player"))
+        _HologramObj = GetComponent<SkinnedMeshRenderer>();
+
+        //makes the hologram material be invisible when the game starts
+        GetComponent<SkinnedMeshRenderer>().enabled = false;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        //  makes the materal appear back into scene when player collides with it, fixed problem meant to be oncollisionenter not trigger
+        if (collision.gameObject.CompareTag("Player"))
         {
-            _HologramObj.SetActive(true);
-            Debug.Log("Shows Hologram");
+            GetComponent<SkinnedMeshRenderer>().enabled = true;
+            Debug.Log("Appeared");
+
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        // makes material of hologram disappear again when player is out of collision radius
+        if (collision.gameObject.CompareTag("Player"))
         {
-            _HologramObj.SetActive(false);
-            Debug.Log("Shows Hologram");
+            GetComponent<SkinnedMeshRenderer>().enabled = false;
+            Debug.Log("Appeared");
+
         }
     }
+
+
+
+
+
 
 
 }
