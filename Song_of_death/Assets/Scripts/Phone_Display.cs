@@ -13,6 +13,8 @@ public class Phone_Display : MonoBehaviour
     [SerializeField]
     private Image[] Characters;
 
+    public GameObject _SafeHinge;
+
     
     private string _CodeSeq;
 
@@ -131,7 +133,8 @@ public class Phone_Display : MonoBehaviour
         if (_CodeSeq == "5059")
         {
             Debug.Log("Correct");
-            GetComponent<Animator>().Play("Safe_Open");
+            //GetComponent<Animator>().Play("Safe_Open");
+            Destroy(_SafeHinge);
         }
         else
         {
