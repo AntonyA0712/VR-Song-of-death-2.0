@@ -13,7 +13,7 @@ public class Hologram_Fade : MonoBehaviour
         //makes the hologram material be invisible when the game starts
         GetComponent<SkinnedMeshRenderer>().enabled = false;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         //  makes the materal appear back into scene when player collides with it, fixed problem meant to be oncollisionenter not trigger
         if (collision.gameObject.CompareTag("Player"))
@@ -24,7 +24,7 @@ public class Hologram_Fade : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         // makes material of hologram disappear again when player is out of collision radius
         if (collision.gameObject.CompareTag("Player"))
