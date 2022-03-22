@@ -5,13 +5,26 @@ using UnityEngine;
 public class Hologram_Fade : MonoBehaviour
 {
     public SkinnedMeshRenderer _HologramObj;
+    public MeshRenderer _Handle;
+    public MeshRenderer _Nozzle;
+    public MeshRenderer _Barrel;
+    public MeshRenderer _Silencer;
+
+    
 
     private void Start()
     {
         _HologramObj = GetComponent<SkinnedMeshRenderer>();
 
+        _Handle = GetComponent<MeshRenderer>();
+        _Nozzle = GetComponent<MeshRenderer>();
+        _Barrel = GetComponent<MeshRenderer>();
+        _Silencer = GetComponent<MeshRenderer>();
+
         //makes the hologram material be invisible when the game starts
         GetComponent<SkinnedMeshRenderer>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = false;
+        
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -19,6 +32,7 @@ public class Hologram_Fade : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GetComponent<SkinnedMeshRenderer>().enabled = true;
+            GetComponent<MeshRenderer>().enabled = true;
             Debug.Log("Appeared");
 
         }
@@ -30,6 +44,7 @@ public class Hologram_Fade : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GetComponent<SkinnedMeshRenderer>().enabled = false;
+            GetComponent<MeshRenderer>().enabled = false;
             Debug.Log("Appeared");
 
         }
