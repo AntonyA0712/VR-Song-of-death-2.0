@@ -8,10 +8,7 @@ public class Hologram_Fade : MonoBehaviour
 
     public GameObject _Weapon;
     
-    //public MeshRenderer _Handle;
-   // public MeshRenderer _Nozzle;
-    //public MeshRenderer _Barrel;
-    //public MeshRenderer _Silencer;
+    
 
     
 
@@ -19,14 +16,11 @@ public class Hologram_Fade : MonoBehaviour
     {
         _HologramObj = GetComponent<SkinnedMeshRenderer>();
 
-        //_Handle = GetComponent<MeshRenderer>();
-        //_Nozzle = GetComponent<MeshRenderer>();
-        //_Barrel = GetComponent<MeshRenderer>();
-        //_Silencer = GetComponent<MeshRenderer>();
+        
 
         //makes the hologram material be invisible when the game starts
         GetComponent<SkinnedMeshRenderer>().enabled = false;
-        //GetComponent<MeshRenderer>().enabled = false;
+        
         _Weapon.SetActive(false);
         
     }
@@ -36,7 +30,7 @@ public class Hologram_Fade : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GetComponent<SkinnedMeshRenderer>().enabled = true;
-            //GetComponent<MeshRenderer>().enabled = true;
+            
             Debug.Log("Appeared");
             _Weapon.SetActive(true);
         }
@@ -48,7 +42,7 @@ public class Hologram_Fade : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GetComponent<SkinnedMeshRenderer>().enabled = false;
-            //GetComponent<MeshRenderer>().enabled = false;
+            
             Debug.Log("Disappeared");
             _Weapon.SetActive(false);
         }
